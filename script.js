@@ -21,6 +21,9 @@ function complete() {
 
 // Show New Quote
 function newQuote() {
+  loading();
+  // setTimeout(console.log, 1000, "Howdy!"
+  // console.log('hello')
   // Pick a random quote from apiQuotes array
   const quote = apiQuotes[Math.floor(Math.random() * apiQuotes.length)];
 
@@ -31,15 +34,18 @@ function newQuote() {
   } else {
     quoteText.classList.remove('long-quote');
   }
-}
+
 
 // check if author field is blank and replace it with 'Unknown'
 if (!quote.author) {
+  console.log(quote.author)
   authorText.textContent = 'Unknown';
 } else {
+
   authorText.textContent = quote.author;
 }
-
+complete()
+}
 // Tweet Quote
 function tweetQuote() {
   const twitterUrl = `https://twitter.com/intent/tweet?text=${quote.textContent} - ${authorText.textContent}`;
@@ -67,7 +73,7 @@ async function getQuotes() {
 }
 
 // On Load
-// getQuotes();
+getQuotes();
 
-loading();
+
 // complete();
